@@ -480,6 +480,13 @@ export const TESTIMONIALS: readonly Testimonial[] = [
     context: "Feedback on BY Solution’s phone system and networking work.",
     href: "#projects",
   },
+  {
+    id: "michauds-salon2",
+    quote: "They are knowledgeable, friendly, caring and pragmatic.",
+    author: "Michaud’s Salon & Wellness Centre",
+    context: "Feedback on BY Solution’s phone system and networking work.",
+    href: "#projects",
+  },
 ];
 
 export const PROCESS_INTRO: SectionIntro = {

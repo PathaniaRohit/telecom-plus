@@ -11,7 +11,7 @@ function pad(value: number) {
 }
 
 export function ProcessStepper({ steps }: { steps: readonly ProcessStep[] }) {
-  const [activeIndex, setActiveIndex] = useState(1);
+  const [activeIndex, setActiveIndex] = useState(0);
   const active = steps[activeIndex];
 
   if (!active) return null;
