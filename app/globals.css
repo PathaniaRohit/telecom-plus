@@ -1,0 +1,210 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #000614;
+  --color-surface: #fafeff;
+  --color-brand: #0096eb;
+  --color-brand-ink: #0074bd;
+  --color-tint: #eef9fd;
+  --color-panel: #eef3f9;
+  --color-mist: #e3f2fd;
+  --color-sky: #cfe4f8;
+  --color-periwinkle: #8498d6;
+  --color-lilac: #b9b6e6;
+
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --text-display: clamp(2.5rem, 1.6rem + 3.6vw, 3.75rem);
+  --text-display--line-height: 1.1;
+  --text-quote: clamp(1.75rem, 1.1rem + 2.6vw, 3rem);
+  --text-quote--line-height: 1.2;
+  --text-title: clamp(1.625rem, 1.35rem + 1vw, 2rem);
+  --text-title--line-height: 1.2;
+  --text-lead: 1.25rem;
+  --text-lead--line-height: 1.25;
+  --text-body: 1rem;
+  --text-body--line-height: 1.15;
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.15;
+  --text-note: 0.8125rem;
+  --text-note--line-height: 1.25;
+  --text-micro: 0.625rem;
+  --text-micro--line-height: 1.2;
+
+  --shadow-card: 0 2px 6px rgb(0 6 20 / 0.12);
+  --shadow-float: 0 4px 16px rgb(0 6 20 / 0.14);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --animate-settle: settle 1.8s var(--ease-out-expo) both;
+  --animate-drift: drift 18s ease-in-out infinite alternate;
+  --animate-ping-soft: ping-soft 2.4s var(--ease-out-expo) infinite;
+  --animate-marquee: marquee 40s linear infinite;
+
+  @keyframes settle {
+    from {
+      transform: scale(1.08);
+    }
+    to {
+      transform: none;
+    }
+  }
+
+  @keyframes drift {
+    from {
+      transform: scale(1.08) translate3d(-1.5%, 0, 0);
+    }
+    to {
+      transform: scale(1.16) translate3d(1.5%, -2%, 0);
+    }
+  }
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes ping-soft {
+    from {
+      opacity: 0.55;
+      transform: scale(0.4);
+    }
+    to {
+      opacity: 0;
+      transform: scale(2.4);
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-padding-top: 6rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html:not(.lenis) {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    background: var(--color-surface);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+}
+
+@utility container-page {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1440px;
+  padding-inline: 1.25rem;
+
+  @media (width >= 48rem) {
+    padding-inline: 2.5rem;
+  }
+}
+
+@utility label-micro {
+  font-size: var(--text-micro);
+  line-height: var(--text-micro--line-height);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+@utility map-viewport {
+  container-type: size;
+}
+
+@utility map-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  aspect-ratio: 1352 / 992;
+  width: max(
+    calc(122cqw * var(--zoom)),
+    calc(100cqh * 1352 / 992 * var(--zoom))
+  );
+  translate: clamp(
+      calc(100cqw - 100%),
+      calc(var(--fx) * 100cqw - var(--px) * 100%),
+      0px
+    )
+    clamp(calc(100cqh - 100%), calc(var(--fy) * 100cqh - var(--py) * 100%), 0px);
+  transition: translate 0.7s var(--ease-out-expo);
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+@utility reveal {
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      animation: reveal-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 45%;
+    }
+  }
+}
+
+@keyframes reveal-rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility header-backdrop {
+  @supports (animation-timeline: scroll()) {
+    @media (prefers-reduced-motion: no-preference) {
+      animation: header-backdrop-in linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0px 120px;
+    }
+  }
+}
+
+@keyframes header-backdrop-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@utility link-wipe {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.45s var(--ease-out-expo);
+  }
+
+  &:hover::after,
+  &:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &::after {
+      transition: none;
+    }
+  }
+}
