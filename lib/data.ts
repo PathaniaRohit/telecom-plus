@@ -102,10 +102,10 @@ export const CONTACT: ContactDetails = {
 };
 
 export const NAV_LINKS: readonly NavLink[] = [
-  { label: "Solutions", href: "#solutions" },
-  { label: "Projects", href: "#projects" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Solutions", href: "/#solutions" },
+  { label: "Projects", href: "/#projects" },
+  { label: "About", href: "/#about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const HEADER_CTA: NavLink = {
@@ -604,23 +604,75 @@ export const FOOTER_COLUMNS: readonly FooterColumn[] = [
     links: [
       {
         label: "Business Communications",
-        href: "#solutions",
+        href: "/#solutions",
       },
-      { label: "Legacy System Support", href: "#solutions" },
-      { label: "Calling & SIP", href: "#solutions" },
-      { label: "Safety Systems", href: "#solutions" },
-      { label: "Network Infrastructure", href: "#solutions" },
-      { label: "Video Surveillance", href: "#solutions" },
-      { label: "Backup Power", href: "#solutions" },
+      { label: "Legacy System Support", href: "/#solutions" },
+      { label: "Calling & SIP", href: "/#solutions" },
+      { label: "Safety Systems", href: "/#solutions" },
+      { label: "Network Infrastructure", href: "/#solutions" },
+      { label: "Video Surveillance", href: "/#solutions" },
+      { label: "Backup Power", href: "/#solutions" },
     ],
   },
   {
     title: "Company",
     links: [
-      { label: "About Telecom Plus", href: "#about" },
-      { label: "Selected Work", href: "#projects" },
-      { label: "Contact", href: "#contact" },
+      { label: "About Telecom Plus", href: "/#about" },
+      { label: "Selected Work", href: "/#projects" },
+      { label: "Contact", href: "/contact" },
       { label: "Customer Support", href: CONTACT.phoneHref },
     ],
   },
+];
+
+export type PageHeroContent = {
+  eyebrow: string;
+  heading: string;
+  body: string;
+  image: Photo;
+};
+
+export type Office = {
+  addressLines: readonly string[];
+  hours: readonly string[];
+  directionsHref: string;
+  map: Photo;
+};
+
+export const CONTACT_HERO: PageHeroContent = {
+  eyebrow: "Contact",
+  heading: "Get in Touch\nwith us.",
+  body: "Get in touch, let us know how we can help",
+  image: { src: "/images/contact-hero.jpg", alt: "" },
+};
+
+export const OFFICE: Office = {
+  addressLines: ["Unit #107 - 7311 Vantage Way,", "Delta, B.C. Canada V4G 1C9"],
+  hours: [
+    "Mon – Fri : 8 am – 7 pm",
+    "Weekend & Holidays: As Needed",
+    "Support: 24/7",
+  ],
+  directionsHref: "https://maps.app.goo.gl/eKoz9jvdnnyK1uqK9",
+  map: {
+    src: "/images/map-bg.png",
+    alt: "Map of the Telecom Plus office on Vantage Way in Delta, BC",
+  },
+};
+
+export const SERVICE_AREAS_INTRO: SectionIntro = {
+  eyebrow: "Service Areas",
+  heading: "Reliable Technology Solutions Across Greater Vancouver",
+  body: "Telecom Plus provides professional telecommunications, networking, and infrastructure solutions to businesses across Greater Vancouver and beyond.",
+};
+
+export const SERVICE_AREAS: readonly string[] = [
+  "Vancouver, North Vancouver",
+  "Tsawwassen, White Rock",
+  "Pitt Meadows, Maple Ridge",
+  "West Vancouver, Burnaby",
+  "Langley, New Westminster",
+  "Gulf Islands, Vancouver Island",
+  "Richmond, Surrey, Delta",
+  "Coquitlam, Port Moody",
 ];
