@@ -63,7 +63,7 @@ export type Project = {
   location: string;
   description?: string;
   image: Photo;
-  pin?: { x: number; y: number };
+  coords: { lat: number; lng: number };
 };
 
 export type Testimonial = {
@@ -93,6 +93,42 @@ export type FooterColumn = {
   links: readonly NavLink[];
 };
 
+export type Detail = {
+  term: string;
+  description: string;
+};
+
+export type PageHeroContent = {
+  breadcrumbs: readonly NavLink[];
+  heading: string;
+  body: string;
+  cta: NavLink;
+  jumpLinks?: { label: string; links: readonly NavLink[] };
+};
+
+export type CtaBandContent = {
+  eyebrow: string;
+  heading: string;
+  body: string;
+  cta: NavLink;
+  phonePrompt?: string;
+};
+
+export type FormField = {
+  name: string;
+  label: string;
+  placeholder: string;
+  type?: "text" | "email" | "tel";
+  autoComplete: string;
+  required?: boolean;
+};
+
+export type ContactFormContent = {
+  fields: readonly FormField[];
+  topic: { label: string; placeholder: string; options: readonly string[] };
+  message: { label: string; placeholder: string; hint: string };
+};
+
 export const CONTACT: ContactDetails = {
   phone: "604-696-3828",
   phoneHref: "tel:+16046963828",
@@ -102,15 +138,15 @@ export const CONTACT: ContactDetails = {
 };
 
 export const NAV_LINKS: readonly NavLink[] = [
-  { label: "Solutions", href: "/#solutions" },
-  { label: "Projects", href: "/#projects" },
-  { label: "About", href: "/#about" },
+  { label: "Solutions", href: "/solutions" },
+  { label: "Projects", href: "/projects" },
+  { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
 export const HEADER_CTA: NavLink = {
   label: "Talk to our team",
-  href: "#contact",
+  href: "/contact#enquiry",
 };
 
 export const HERO: HeroContent = {
@@ -191,7 +227,10 @@ export const SOLUTIONS: readonly Solution[] = [
           "Move or upgrade your system with a plan for the transition.",
       },
     ],
-    cta: { label: "Explore Communications", href: "#contact" },
+    cta: {
+      label: "Explore Communications",
+      href: "/solutions/business-communications",
+    },
     image: {
       src: "/images/solutions/communications.png",
       alt: "Grandstream desk phone showing the Telecom Plus website in a bright lobby",
@@ -426,12 +465,7 @@ export const PROJECTS_INTRO = {
   eyebrow: "Our work",
   heading: "Projects built around real business needs.",
   body: "Explore a selection of phone, network and communication projects completed by the BY Solution team, highlighting the range of systems and business environments they’ve supported.",
-  allProjects: { label: "Show all projects", href: "#contact" },
-};
-
-export const PROJECTS_MAP: Photo = {
-  src: "/images/projects/map-lower-mainland.jpg",
-  alt: "",
+  allProjects: { label: "Show all projects", href: "/projects" },
 };
 
 export const PROJECTS: readonly Project[] = [
@@ -444,6 +478,7 @@ export const PROJECTS: readonly Project[] = [
       src: "/images/projects/dunsmuir-middle-school.png",
       alt: "Telecom Plus service vans and team outside Dunsmuir Middle School",
     },
+    coords: { lat: 48.4436, lng: -123.4985 },
   },
   {
     id: "chilliwack-ford",
@@ -456,7 +491,7 @@ export const PROJECTS: readonly Project[] = [
       src: "/images/projects/chilliwack-ford.png",
       alt: "Technician on a lift at the Chilliwack Ford service entrance",
     },
-    pin: { x: 0.939, y: 0.398 },
+    coords: { lat: 49.1627, lng: -121.9554 },
   },
   {
     id: "school-district-62-board-office",
@@ -467,6 +502,7 @@ export const PROJECTS: readonly Project[] = [
       src: "/images/projects/school-district-62-board-office.png",
       alt: "Telecom Plus team outside the School District No. 62 Sooke administration office",
     },
+    coords: { lat: 48.4505, lng: -123.5071 },
   },
 ];
 
@@ -478,14 +514,14 @@ export const TESTIMONIALS: readonly Testimonial[] = [
     quote: "They are knowledgeable, friendly, caring and pragmatic.",
     author: "Michaud’s Salon & Wellness Centre",
     context: "Feedback on BY Solution’s phone system and networking work.",
-    href: "#projects",
+    href: "/projects",
   },
   {
     id: "michauds-salon2",
     quote: "They are knowledgeable, friendly, caring and pragmatic.",
     author: "Michaud’s Salon & Wellness Centre",
     context: "Feedback on BY Solution’s phone system and networking work.",
-    href: "#projects",
+    href: "/projects",
   },
 ];
 
@@ -576,8 +612,8 @@ export const CONTACT_INTRO = {
 export const FOOTER = {
   tagline: "Let’s keep your business connected.",
   body: "Business phones, networks and workplace communications, backed by local support.",
-  legal: "Telecom Plus is a division of BY Solution. All rights reserved.",
-  copyright: "© 2026 Telecom Plus",
+  legal:
+    "© 2026 Telecom Plus is a division of BY Solution. All rights reserved.",
 };
 
 export const SOCIAL_LINKS: readonly SocialLink[] = [
@@ -604,75 +640,97 @@ export const FOOTER_COLUMNS: readonly FooterColumn[] = [
     links: [
       {
         label: "Business Communications",
-        href: "/#solutions",
+        href: "/solutions/business-communications",
       },
-      { label: "Legacy System Support", href: "/#solutions" },
-      { label: "Calling & SIP", href: "/#solutions" },
-      { label: "Safety Systems", href: "/#solutions" },
-      { label: "Network Infrastructure", href: "/#solutions" },
-      { label: "Video Surveillance", href: "/#solutions" },
-      { label: "Backup Power", href: "/#solutions" },
+      { label: "Legacy System Support", href: "/solutions" },
+      { label: "Calling & SIP", href: "/solutions" },
+      { label: "Safety Systems", href: "/solutions" },
+      { label: "Network Infrastructure", href: "/solutions" },
+      { label: "Video Surveillance", href: "/solutions" },
+      { label: "Backup Power", href: "/solutions" },
     ],
   },
   {
     title: "Company",
     links: [
-      { label: "About Telecom Plus", href: "/#about" },
-      { label: "Selected Work", href: "/#projects" },
+      { label: "About Telecom Plus", href: "/about" },
+      { label: "Selected Work", href: "/projects" },
       { label: "Contact", href: "/contact" },
       { label: "Customer Support", href: CONTACT.phoneHref },
     ],
   },
 ];
 
-export type PageHeroContent = {
-  eyebrow: string;
-  heading: string;
-  body: string;
-  image: Photo;
+export const CTA_BAND: CtaBandContent = {
+  eyebrow: "Start the conversation",
+  heading: "Your next connection starts here.",
+  body: "Tell us about your organization and what you need. We’ll help you understand your options and find the right direction.",
+  cta: { label: "Talk to our team", href: "/contact#enquiry" },
+  phonePrompt: "Prefer to talk?",
 };
 
-export type Office = {
-  addressLines: readonly string[];
-  hours: readonly string[];
-  directionsHref: string;
-  map: Photo;
-};
-
-export const CONTACT_HERO: PageHeroContent = {
-  eyebrow: "Contact",
-  heading: "Get in Touch\nwith us.",
-  body: "Get in touch, let us know how we can help",
-  image: { src: "/images/contact-hero.jpg", alt: "" },
-};
-
-export const OFFICE: Office = {
-  addressLines: ["Unit #107 - 7311 Vantage Way,", "Delta, B.C. Canada V4G 1C9"],
-  hours: [
-    "Mon – Fri : 8 am – 7 pm",
-    "Weekend & Holidays: As Needed",
-    "Support: 24/7",
+export const CONTACT_FORM: ContactFormContent = {
+  fields: [
+    {
+      name: "firstName",
+      label: "First name",
+      placeholder: "First name",
+      autoComplete: "given-name",
+      required: true,
+    },
+    {
+      name: "lastName",
+      label: "Last name",
+      placeholder: "Last name",
+      autoComplete: "family-name",
+    },
+    {
+      name: "businessName",
+      label: "Organization",
+      placeholder: "Business or organization name",
+      autoComplete: "organization",
+    },
+    {
+      name: "location",
+      label: "City / service location",
+      placeholder: "Where is the work needed?",
+      autoComplete: "address-level2",
+      required: true,
+    },
+    {
+      name: "email",
+      label: "Email",
+      placeholder: "you@organization.ca",
+      type: "email",
+      autoComplete: "email",
+      required: true,
+    },
+    {
+      name: "phone",
+      label: "Phone",
+      placeholder: "Best number to reach you",
+      type: "tel",
+      autoComplete: "tel",
+    },
   ],
-  directionsHref: "https://maps.app.goo.gl/eKoz9jvdnnyK1uqK9",
-  map: {
-    src: "/images/map-bg.png",
-    alt: "Map of the Telecom Plus office on Vantage Way in Delta, BC",
+  topic: {
+    label: "What can we help with?",
+    placeholder: "Select an option",
+    options: [
+      "Business communications",
+      "Legacy system support",
+      "Calling & SIP",
+      "Safety systems",
+      "Network infrastructure",
+      "Video surveillance",
+      "Backup power",
+      "Something else",
+    ],
+  },
+  message: {
+    label: "Message",
+    placeholder:
+      "Tell us about your existing system, the issue or the work you’re planning.",
+    hint: "Please don’t include passwords, access codes or other sensitive information.",
   },
 };
-
-export const SERVICE_AREAS_INTRO: SectionIntro = {
-  eyebrow: "Service Areas",
-  heading: "Reliable Technology Solutions Across Greater Vancouver",
-  body: "Telecom Plus provides professional telecommunications, networking, and infrastructure solutions to businesses across Greater Vancouver and beyond.",
-};
-
-export const SERVICE_AREAS: readonly string[] = [
-  "Vancouver, North Vancouver",
-  "Tsawwassen, White Rock",
-  "Pitt Meadows, Maple Ridge",
-  "West Vancouver, Burnaby",
-  "Langley, New Westminster",
-  "Gulf Islands, Vancouver Island",
-  "Richmond, Surrey, Delta",
-  "Coquitlam, Port Moody",
-];

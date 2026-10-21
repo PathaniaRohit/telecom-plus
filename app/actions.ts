@@ -13,6 +13,7 @@ const FIELDS = [
   "location",
   "email",
   "phone",
+  "topic",
   "message",
 ] as const;
 
@@ -41,14 +42,15 @@ export async function submitContact(
 
   if (
     !fields.firstName ||
-    !fields.lastName ||
+    !fields.location ||
     !EMAIL_PATTERN.test(fields.email) ||
+    !fields.topic ||
     fields.message.length < 10
   ) {
     return {
       ok: false,
       message:
-        "Please add your first and last name, a valid email and a message of at least 10 characters.",
+        "Please add your first name, location, a valid email, what we can help with and a message of at least 10 characters.",
       values: fields,
     };
   }
