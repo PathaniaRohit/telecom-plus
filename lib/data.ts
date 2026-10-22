@@ -263,7 +263,7 @@ export const SOLUTIONS: readonly Solution[] = [
         description: "Arrange ongoing maintenance and help when issues arise.",
       },
     ],
-    cta: { label: "Explore Legacy Support", href: "#contact" },
+    cta: { label: "Explore Legacy Support", href: "/solutions/legacy-system-support" },
     image: {
       src: "/images/solutions/legacy-support.png",
       alt: "Wall-mounted legacy telephone system cabinets and wiring",
@@ -295,7 +295,7 @@ export const SOLUTIONS: readonly Solution[] = [
         description: "Connect fax workflows with your communication setup.",
       },
     ],
-    cta: { label: "Explore Calling & SIP", href: "#contact" },
+    cta: { label: "Explore Calling & SIP", href: "/solutions/calling-sip" },
     image: {
       src: "/images/solutions/calling-sip.png",
       alt: "Network rack with switches and patch panels",
@@ -329,7 +329,7 @@ export const SOLUTIONS: readonly Solution[] = [
           "Bring system status and notifications into a connected response.",
       },
     ],
-    cta: { label: "Explore Safety Systems", href: "#contact" },
+    cta: { label: "Explore Safety Systems", href: "/solutions/safety-systems" },
     image: {
       src: "/images/solutions/safety-systems.png",
       alt: "Ceiling-mounted paging speaker in an office",
@@ -362,7 +362,7 @@ export const SOLUTIONS: readonly Solution[] = [
         description: "Design and install UPS systems for essential equipment.",
       },
     ],
-    cta: { label: "Explore Infrastructure", href: "#contact" },
+    cta: { label: "Explore Infrastructure", href: "/solutions/network-infrastructure" },
     image: {
       src: "/images/solutions/infrastructure.png",
       alt: "Technician fitting a patch panel into a network rack",
@@ -395,7 +395,7 @@ export const SOLUTIONS: readonly Solution[] = [
         description: "Consider on-site or remote backup for supported systems.",
       },
     ],
-    cta: { label: "Explore Surveillance", href: "#contact" },
+    cta: { label: "Explore Surveillance", href: "/solutions/video-surveillance" },
     image: {
       src: "/images/solutions/surveillance.png",
       alt: "Telecom Plus dome security camera mounted on a ceiling",
@@ -429,7 +429,7 @@ export const SOLUTIONS: readonly Solution[] = [
           "Plan which equipment the UPS will support and how it fits into your existing setup.",
       },
     ],
-    cta: { label: "Explore Backup Power", href: "#contact" },
+    cta: { label: "Explore Backup Power", href: "/solutions/backup-power" },
     image: {
       src: "/images/solutions/backup-power.png",
       alt: "Eaton and APC UPS units installed side by side",
@@ -642,12 +642,12 @@ export const FOOTER_COLUMNS: readonly FooterColumn[] = [
         label: "Business Communications",
         href: "/solutions/business-communications",
       },
-      { label: "Legacy System Support", href: "/solutions" },
-      { label: "Calling & SIP", href: "/solutions" },
-      { label: "Safety Systems", href: "/solutions" },
-      { label: "Network Infrastructure", href: "/solutions" },
-      { label: "Video Surveillance", href: "/solutions" },
-      { label: "Backup Power", href: "/solutions" },
+      { label: "Legacy System Support", href: "/solutions/legacy-system-support" },
+      { label: "Calling & SIP", href: "/solutions/calling-sip" },
+      { label: "Safety Systems", href: "/solutions/safety-systems" },
+      { label: "Network Infrastructure", href: "/solutions/network-infrastructure" },
+      { label: "Video Surveillance", href: "/solutions/video-surveillance" },
+      { label: "Backup Power", href: "/solutions/backup-power" },
     ],
   },
   {

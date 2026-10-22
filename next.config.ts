@@ -19,6 +19,9 @@ const csp = [
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  experimental: {
+    agentUpgrade: "security",
+  },
   poweredByHeader: false,
   cacheComponents: true,
   partialPrefetching: true,
