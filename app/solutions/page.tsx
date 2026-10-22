@@ -83,7 +83,7 @@ export default function Page() {
         </section>
 
         <section className="container-page grid items-center gap-10 pb-24 lg:grid-cols-2 lg:pb-[150px]">
-          <div className="reveal relative aspect-[660/400] overflow-clip rounded-[4px] shadow-card">
+          <div className="reveal relative aspect-[660/260] overflow-clip rounded-[4px] shadow-card">
             <Image
               src={SITE_ASSESSMENT_IMAGE.src}
               alt={SITE_ASSESSMENT_IMAGE.alt}

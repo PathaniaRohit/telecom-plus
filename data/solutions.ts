@@ -47,37 +47,37 @@ export const SERVICES: readonly ServiceCard[] = [
   {
     title: "Legacy System Support",
     body: "Maintenance, compatible replacement equipment and transition planning for existing Nortel and Avaya systems.",
-    link: { label: "Explore legacy support", href: "/contact#enquiry" },
+    link: { label: "Explore legacy support", href: "/solutions/legacy-system-support" },
     image: { src: "/images/solutions/cards/legacy-system-support.png", alt: "Wall-mounted legacy telephone system cabinets" },
   },
   {
     title: "Calling & SIP",
     body: "SIP trunks, business numbers, analog connectivity and fax options for your phone setup.",
-    link: { label: "Explore calling & SIP", href: "/contact#enquiry" },
+    link: { label: "Explore calling & SIP", href: "/solutions/calling-sip" },
     image: { src: "/images/solutions/cards/calling-sip.png", alt: "Network rack with patched switches and a router" },
   },
   {
     title: "Safety Systems",
     body: "Nurse call, paging and integrated notifications for care facilities, schools and other sites.",
-    link: { label: "Explore safety systems", href: "/contact#enquiry" },
+    link: { label: "Explore safety systems", href: "/solutions/safety-systems" },
     image: { src: "/images/solutions/cards/safety-systems.png", alt: "Ceiling-mounted paging speaker" },
   },
   {
     title: "Network Infrastructure",
     body: "Structured cabling, network equipment and organized racks for the systems across your site.",
-    link: { label: "Explore infrastructure", href: "/contact#enquiry" },
+    link: { label: "Explore infrastructure", href: "/solutions/network-infrastructure" },
     image: { src: "/images/solutions/cards/network-infrastructure.png", alt: "Technician fitting a patch panel into a network rack" },
   },
   {
     title: "Video Surveillance",
     body: "Camera systems, recording and authorized viewing access planned around the areas you need to monitor.",
-    link: { label: "Explore surveillance", href: "/contact#enquiry" },
+    link: { label: "Explore surveillance", href: "/solutions/video-surveillance" },
     image: { src: "/images/solutions/cards/video-surveillance.png", alt: "Dome security camera mounted under a ceiling" },
   },
   {
     title: "Backup Power",
     body: "UPS selection and planning based on essential equipment, power demand and required backup time.",
-    link: { label: "Explore backup power", href: "/contact#enquiry" },
+    link: { label: "Explore backup power", href: "/solutions/backup-power" },
     image: { src: "/images/solutions/cards/backup-power.png", alt: "Floor-standing UPS units installed side by side" },
   },
 ];

@@ -22,6 +22,23 @@ export type Question = {
   answer: string;
 };
 
+export type SolutionDetailContent = {
+  hero: PageHeroContent;
+  overview: { intro: SectionIntro; items: readonly Detail[] };
+  services: {
+    intro: SectionIntro;
+    items: readonly Offering[];
+    links?: readonly NavLink[];
+  };
+  planning: {
+    intro: SectionIntro;
+    image: Photo;
+    factors: readonly Detail[];
+    comparison?: Comparison;
+  };
+  faq: { intro: SectionIntro; questions: readonly Question[] };
+};
+
 export const BUSINESS_COMMUNICATIONS_META: Metadata = {
   title: "Business Communications — Cloud, on-site and hybrid phone systems",
   description:
@@ -100,9 +117,12 @@ export const ADDITIONAL_SERVICES: readonly Offering[] = [
 export const RELATED_LINKS: readonly NavLink[] = [
   {
     label: "Explore nurse call & school notification systems",
-    href: "/solutions",
+    href: "/solutions/safety-systems",
   },
-  { label: "Explore eFax integration & hosting", href: "/solutions" },
+  {
+    label: "Explore eFax integration & hosting",
+    href: "/solutions/calling-sip",
+  },
 ];
 
 export const PLANNING_INTRO: SectionIntro = {
@@ -112,15 +132,14 @@ export const PLANNING_INTRO: SectionIntro = {
 };
 
 export const PLANNING_IMAGE: Photo = {
-  src: "/images/solutions/communications.png",
+  src: "/images/solutions/communications2.png",
   alt: "Grandstream desk phone in a reception area",
 };
 
 export const PLANNING_FACTORS: readonly Detail[] = [
   {
     term: "People & locations",
-    description:
-      "Users, extensions, shared phones and remote working needs.",
+    description: "Users, extensions, shared phones and remote working needs.",
   },
   {
     term: "Calling & integrations",
@@ -144,7 +163,10 @@ export const PLATFORM_COMPARISON: Comparison = {
   rows: [
     {
       label: "System location",
-      values: ["Hosted by the service provider.", "Installed at your premises."],
+      values: [
+        "Hosted by the service provider.",
+        "Installed at your premises.",
+      ],
     },
     {
       label: "Connectivity",
@@ -193,3 +215,20 @@ export const FAQ: readonly Question[] = [
       "You need the appropriate Teams Phone licensing and a connection to the public telephone network. A SIP trunk alone isn’t enough. For Direct Routing, a certified session border controller connects the telephone service to Teams.",
   },
 ];
+
+export const BUSINESS_COMMUNICATIONS: SolutionDetailContent = {
+  hero: BUSINESS_COMMUNICATIONS_HERO,
+  overview: { intro: PHONE_SYSTEMS_INTRO, items: PHONE_SYSTEMS },
+  services: {
+    intro: ADDITIONAL_SERVICES_INTRO,
+    items: ADDITIONAL_SERVICES,
+    links: RELATED_LINKS,
+  },
+  planning: {
+    intro: PLANNING_INTRO,
+    image: PLANNING_IMAGE,
+    factors: PLANNING_FACTORS,
+    comparison: PLATFORM_COMPARISON,
+  },
+  faq: { intro: FAQ_INTRO, questions: FAQ },
+};
